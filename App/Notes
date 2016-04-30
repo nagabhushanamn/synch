@@ -1,0 +1,44 @@
+
+
+ what 'JS' can do on HTML page in browser-envi?
+ 
+ 
+  JS using Web APIs can bring any dynamic-behav to HTML-pag in browser.
+  
+  what Web APIs ?
+  
+   e.g
+   
+      DOM , XHR ( AJAX ) , Timer 
+      
+      HTML-5 --> canvas , audio/video , WebGL , Geo , localStorage
+      
+      some Web APIs are based on 'w3c' standard.
+      
+      
+    using DOM API
+    
+    --> cat create/retreive/update/delete HTML elements.
+    --> can change element's style
+    --> can change element's attribute values
+    --> can change element's text content
+    --> can validate form-fields
+    --> can create rich UI components
+    --> can listen/handle events
+    
+    using XHR API
+    
+    --> can communicate with server-side programs , update results
+        in existing page ( AJAX )
+    
+    using TimerAPI
+    
+    ----------------------------------------------------------
+    
+    
+    
+    
+    
+    
+    
+    
