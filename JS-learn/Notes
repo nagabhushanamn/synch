@@ -1,0 +1,108 @@
+
+  JavaScript
+  ------------
+  
+   --> scripting lang for HTML page in browser-envi
+       +
+   --> server-side lang on NodeJS    
+   --> desktop/stand-alone appln
+   --> mobile appln
+   --> command-line tools    
+   --> to write test-case on SOAP-UI tool
+   
+   
+   JS Features
+   -------------------
+   
+   --> functional pgming lang.
+   --> OO pgming lang
+   
+   --> dynamic typed lang.
+   --> supports 'closures'
+   
+   --> single-threaded lang
+   --> can implement concurrency thru JS runtime 
+   --> Non blocking when IO happening. 
+   
+       ( callbacks , eventloops , APIs )
+       
+   --------------------------------------        
+   
+   
+   JS lang is based on 'ECMAScript' spec
+   
+   latest reasons - ES 6 
+   
+   -------------------------------------- 
+   
+   To run JS programs , need JS-engine
+   
+   browsers envi
+   --------------
+   
+   IE --> chakra
+   firefox --> rhino ( java )
+   chrome  --> v8    ( c++  )
+   safari  --> nitro
+   
+   
+   non-browser envi
+   -----------------
+   
+   NodeJS  --> v8
+   
+   -------------------------------------------
+   
+   
+   JavaScript lang
+   ---------------
+   
+     DataStructures / DataTypes / variables
+     
+     a. simple types            ( primitives )
+     
+        1. string
+        2. number
+        3. boolean
+        4. null
+        5. undefined
+        6. symbol  ( from es6 )
+        
+     
+     
+     b. complex/reference types ( objects    )
+     
+     
+     
+     --------------------------------------------
+     
+     
+     while loading initial JS file into envi ,
+     
+     'global execution context' will get created
+     
+       'global-obj'
+       
+         browser  --> window  ===> this
+         node     --> global
+     
+     
+     -----------------------------------------
+     
+     
+     
+     use of closures
+     -----------------
+     
+     
+     --> to make asbtract behav.
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
