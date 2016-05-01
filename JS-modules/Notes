@@ -1,0 +1,19 @@
+
+
+
+  how to make 'js-modules' ?
+  
+  2 solutions/approaches
+  
+   --> AMD standard
+   --> commonJS standard
+   
+   
+   -----------------------------
+   
+   
+   
+   AMD ( Asycn Module Definition )
+   
+	  a. define();
+	  b. require()

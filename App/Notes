@@ -35,6 +35,80 @@
     
     ----------------------------------------------------------
     
+    JS is
+    
+    --> single-threaded lang
+    --> supports concurrency
+    --> non-blocking whlie IO happening
+    
+    --------------------------------------------------------
+    
+    
+    browser  e.g chrome
+    
+    a. JS engine ( v8 )
+    
+        i. call-stack
+       ii. heap
+       
+    b. callback-queue
+    c. even-loop
+    
+    d. Web APIs   
+    
+    -----------------------------------------------------------
+    
+    
+    
+    limitations of 'plain-script' in browser-envi
+    
+    
+    --> browser compatibility.
+    --> too much code for simple-oprn
+    --> performance and memory management
+    
+    
+    soln:
+    
+    --> use 'Javascript' libraries
+    
+       'jQuery'
+    
+    
+    
+    Limitations with jQuery library
+    
+    --> jQuery func are too low-level ( works DOM elements )
+    --> View + Behah tightly coupled
+    --> code organization difficult.
+    
+    
+    best soln:
+    
+    --> Knockout JS lirary
+    
+    
+    JS F.Ws
+    
+    -> Backbone
+    -> Angular : google community
+    -> EmberJS
+    
+      
+    -> DOJO 
+    
+    -> ExtJS ( commercial )  based on YUI
+    
+     
+    
+    
+    
+    
+    ------------------------------------------------------------
+    
+    
+    
+    
     
     
     

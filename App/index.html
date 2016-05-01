@@ -13,7 +13,28 @@
 	<button class="btn btn-danger">Hide</button>
 	<button class="btn btn-success">Show</button>
 
+	<button id="teach" class="btn btn-primary">Teach</button>
 
+	<hr />
+
+
+	<div id="box1" class="jumbotron">
+		<!-- View -->
+		<form>
+			Name: <input data-bind="value:name"> 
+			      <button data-bind='click:resetName' type="button" class="btn btn-default">Reset</button>
+		</form>
+		<hr />
+		
+		Hello : <span data-bind="text:name">(name)</span>
+		
+	</div>
+
+	Hello : <span data-bind="text:name">(name)</span>
+
+
+	<script type="text/javascript" src="js/lib/jquery-2.2.0.js"></script>
+	<script type="text/javascript" src="js/lib/knockout-3.4.0.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 
 </body>
