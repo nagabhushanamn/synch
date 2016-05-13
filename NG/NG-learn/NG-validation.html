@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+input.ng-dirty.ng-invalid {
+	border: 1px solid red;
+}
+</style>
+</head>
+<body class="container">
+
+	<div class="page-header">NG two-way data-binding Ex</div>
+
+	<div ng-app="demoApp">
+
+		<form name="loginForm" ng-controller="LoginController" ng-submit="loginForm.$valid&&doLogin()" novalidate>
+			<div class="row">
+				<div class="col-md-6">
+
+					<div class="form-group">
+						<label>Email</label> 
+						<input type="email" ng-model="user.email" name="email" class="form-control" required>
+						<span ng-show="loginForm.email.$error.required&&loginForm.email.$dirty" class="text-danger">Required</span>
+						<span ng-show="loginForm.email.$error.email&&loginForm.email.$dirty" class="text-danger">Invalid Email</span>
+					</div>
+					
+					<div class="form-group">
+						<label>Password</label> 
+						<input type="password" ng-model="user.password" name="pword" class="form-control" required ng-minlength="3" ng-maxlength="6">
+						<span ng-show="loginForm.pword.$error.required&&loginForm.pword.$dirty" class="text-danger">Required</span>
+						<span ng-show="loginForm.pword.$error.minlength&&loginForm.pword.$dirty" class="text-danger">Too short</span>
+						<span ng-show="loginForm.pword.$error.maxlength&&loginForm.pword.$dirty" class="text-danger">Too Long</span>
+					</div>
+					
+					<button type="submit" class="btn btn-primary" ng-disabled="loginForm.$invalid">Sign-In</button>
+					
+				</div>
+			</div>
+			
+			
+			is loginForm pristine - {{loginForm.$pristine}}<br /> 
+			is loginForm dirty - {{loginForm.$dirty}} <br />
+			is loginForm invalid -{{loginForm.$invalid}} <br />
+			is loginForm valid - {{loginForm.$valid}}
+
+		</form>
+
+
+	</div>
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+
+
+	<script type="text/javascript">
+		var mod = angular.module('demoApp', []);
+		mod.controller('LoginController', function($scope) {
+			$scope.doLogin=function(){
+				console.log('doing login');
+			}
+		});
+	</script>
+
+</body>
+</html>

@@ -14,3 +14,36 @@ Now angular doing 2-way databinding ?
    
    
    all 'watch expression' will get executed by 'digest-loop'
+   
+   
+==============================================================
+
+
+
+  NG , validates form-fields in 2 ways , automatically
+  
+    way-1 : using HTML-5 form validation attributes
+    way-2 : validation 'directives'
+
+
+   after validating , it keeps form/form-fields in following states
+   
+   
+    1. pristine 
+    2. dirty
+    3. invalid
+    4. valid
+    
+    5. untouched
+    6. touched
+    
+    ------------------------------------
+
+
+
+
+
+
+
+
+
