@@ -1,0 +1,16 @@
+
+
+Now angular doing 2-way databinding ?
+
+ angular life-cycle
+ ------------------
+ 
+   compilation-phase
+   
+   on every DOM element which are binded with directives/expression,
+   will register 'watch expression' ( listeners ) to read/write ViewModel
+   
+   we can also register 'custom watch expressions'
+   
+   
+   all 'watch expression' will get executed by 'digest-loop'

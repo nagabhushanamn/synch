@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shop-v1</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container">
+
+	<div class="page-header">NG two-way data-binding</div>
+
+	<div ng-app="demoApp">
+
+		<div ng-controller="UserController">
+
+
+			Your Name : <input ng-model="name">
+			<button class="btn btn-default" ng-click="reset()">Reset</button>
+			<button class="btn btn-default" ng-click="fullName()">FullName ( ng-click )</button>
+			<button class="btn btn-default" onclick="window.fullName()">FullName ( onclick )</button>
+			<hr />
+
+			Hello <span id="nameSpan" ng-bind="name"></span>
+
+		</div>
+
+	</div>
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		/* 
+		
+		var name='';
+		
+		var nameField=document.querySelector('#uname');
+		var nameSpan=document.querySelector('#nameSpan');
+		var resetBtn=document.querySelector('#reset');
+		var fullNameBtn=document.querySelector('#fullName');
+		
+		nameField.addEventListener('keyup',function(){
+			name=this.value;
+			updateDOM();
+		});
+		
+		resetBtn.addEventListener('click',function(){
+			name='';
+			updateDOM();
+		});
+		
+		
+		fullNameBtn.addEventListener('click',function(){
+			name='Nagabhushanam';
+			updateDOM();
+		});
+		
+		function updateDOM(){
+			nameField.value=name;
+			nameSpan.innerHTML=name;
+		} 
+		
+		 */
+	</script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demoApp', []);
+		mod.controller('UserController', function($scope) {
+
+			$scope.name = '';
+			$scope.reset = function() {
+				$scope.name = '';
+			};
+			$scope.fullName = function() {
+				$scope.name = 'Nagabhushanam';
+			};
+
+			// custom watch expression
+			$scope.$watch('name', function(newVal, oldVal) {
+				console.log('digest-loop running..');
+				console.log(newVal);
+				console.log(oldVal);
+			});
+			
+			window.fullName=function(){
+				console.log('getting fullName');
+				$scope.name = 'Nagabhushanam';
+				$scope.$apply();  // trigger digest-loop
+			}
+			
+
+		});
+	</script>
+
+</body>
+</html>

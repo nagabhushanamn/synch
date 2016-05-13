@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shop-v1</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+.ng-scope {
+	border: 1px solid red;
+	padding: 10px;
+}
+div{
+margin: 3px;
+}
+</style>
+</head>
+<body class="container">
+
+	<div class="page-header">NG scope(s) ( ViewModel )</div>
+
+	<div ng-app="demoApp">
+		<span class="badge">{{color}} </span> 
+		<button class="btn btn-primary" ng-click="changeColor()">change color</button>
+		
+		
+		<div ng-controller="ColorController">
+			
+			<span class="badge">{{color}} </span> 
+			<button class="btn btn-primary" ng-click="changeColor()">change color</button>
+			
+			<div ng-controller="OtherController">
+				<span class="badge">{{color}} </span> 
+			</div>
+			
+		</div>
+		
+	</div>
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demoApp', []);
+		mod.run(function($rootScope) {
+			$rootScope.color = 'red';
+			$rootScope.changeColor=function(){
+				console.log('changing $rootScope.color');
+				$rootScope.color='blue';
+			};
+		});
+		
+		mod.controller('ColorController', function($scope) {
+			console.log('ColorController instance created..');
+			$scope.color='yellow';
+			$scope.changeColor=function(){
+				console.log('changing $scope.color');
+				$scope.color='green';
+				$scope.$parent.color='green'
+			};
+		});
+		
+		mod.controller('OtherController', function($scope) {
+			console.log('OtherController instance created..');
+		});
+		
+	</script>
+
+</body>
+</html>

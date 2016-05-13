@@ -16,13 +16,21 @@
 		<div ng-controller="StoreController as sc" class="list-group">
 			
 			<!-- View -->
+			
 			<div ng-hide="product.notAvailable" 
 			     ng-repeat="product in products | limitTo:10 | orderBy:'-price'" class="list-group-item">
-			     <span class="badge">{{$index+1}}</span> 
-				<h4>{{product.name | uppercase}} <small>{{product.make | date : 'yyyy' }}</small> </h4>
-				<h5>{{product.price | priceDiscount:product.discount | currency : '&#8377;' : 1 }}</h5>
-				<p>{{product.desc}}</p>
-				<button ng-show="product.canBuy" class="btn btn-primary">Add to Cart</button>
+			   	<div class="row">
+					<div class="col-md-3 visible-md">
+						 <img alt="" ng-src="{{product.images[0].full}}" class="img-responsive" style="width: 100px">
+					</div>
+					<div class="col-md-9">
+					    <span class="badge">{{$index+1}}</span> 
+						<h4>{{product.name | uppercase}} <small>{{product.make | date : 'yyyy' }}</small> </h4>
+						<h5>{{product.price | priceDiscount:product.discount | currency : '&#8377;' : 1 }}</h5>
+						<p>{{product.desc}}</p>
+						<button ng-show="product.canBuy" class="btn btn-primary">Add to Cart</button>
+					</div>
+				</div>
 			</div>
 			
 			

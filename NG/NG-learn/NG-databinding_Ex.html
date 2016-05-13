@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shop-v1</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container">
+
+	<div class="page-header">NG two-way data-binding Ex</div>
+
+	<div ng-app="demoApp">
+
+		<div ng-controller="UserController">
+			<select ng-options="n for n in [5,10,15,20]" ng-model="ucount"></select>
+			<input ng-model="ucount">
+			<table class="table table-bordered table-condensed table-striped table-responsive">
+				<tr ng-repeat="user in users">
+					<td>{{user.fname}}</td>
+					<td>{{user.lname}}</td>
+				</tr>
+			</table>
+
+		</div>
+
+	</div>
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	
+
+	<script type="text/javascript">
+		var mod = angular.module('demoApp', []);
+		
+		mod.controller('UserController', function($scope,$http) {
+			
+			$scope.ucount=5;
+			
+			$scope.$watch('ucount',function(newCount,oldCount){
+				loadUsers(newCount);
+			});
+			
+			function loadUsers(count){
+				$http.jsonp("http://www.filltext.com/?callback=JSON_CALLBACK&rows="+count+"&fname={firstName}&lname={lastName}").
+			    success(function (data) {
+			        $scope.users = data
+			    });
+			}
+
+		});
+	</script>
+
+</body>
+</html>

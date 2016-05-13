@@ -15,7 +15,8 @@
 		canBuy : true,
 		notAvailable : false,
 		make : Date.now(),
-		discount : 1000
+		discount : 1000,
+		images:[{full:'images/Laptop.png',thumb:''},{full:'',thumb:''}]
 	}, {
 		name : 'Mobile',
 		price : 9000,
@@ -23,7 +24,8 @@
 		canBuy : true,
 		notAvailable : false,
 		make : Date.now(),
-		discount : 500
+		discount : 500,
+		images:[{full:'images/Mobile.png',thumb:''},{full:'',thumb:''}]
 	} ];
 	// ----------------------------------------------
 
