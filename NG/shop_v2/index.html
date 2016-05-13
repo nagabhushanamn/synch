@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shop-v1</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+<body class="container">
+
+	<div class="page-header">Shop-v1</div>
+
+	<div data-ng-app="store">
+
+		<input placeholder="serach">
+		
+		<div ng-controller="StoreController as sc" class="list-group">
+			
+			<!-- View -->
+			
+			<div ng-hide="product.notAvailable" 
+			     data-ng-repeat="product in products | limitTo:10 | orderBy:'-price'" class="list-group-item">
+			   	<div class="row">
+					<div class="col-md-3 visible-md">
+						 <img alt="" ng-src="{{product.images[0].full}}" class="img-responsive" style="width: 100px">
+					</div>
+					<div class="col-md-9">
+					    <span class="badge">{{$index+1}}</span> 
+						<h4>{{product.name | uppercase}} <small>{{product.make | date : 'yyyy' }}</small> </h4>
+						<h5>{{product.price | priceDiscount:product.discount | currency : '&#8377;' : 1 }}</h5>
+						<button ng-show="product.canBuy" class="btn btn-primary">Add to Cart</button>
+					</div>
+				</div>
+				<hr/>
+				<section ng-controller="TabsController">
+					<ul class="nav nav-tabs">
+						<li ng-class="{active:isTabSelected(1)}"><a href ng-click="changeTab(1)">Description</a></li>
+						<li ng-class="{active:isTabSelected(2)}"><a href ng-click="changeTab(2)">Specifications</a></li>
+						<li ng-class="{active:isTabSelected(3)}"><a href ng-click="changeTab(3)">Reviews</a></li>
+					</ul>
+					<div class="panel" ng-show="isTabSelected(1)">
+						<div class="panel-body">{{product.desc}}</div>
+					</div>
+					<div class="panel" ng-show="isTabSelected(2)">
+						<div class="panel-body">Not Yet</div>
+					</div>
+					<div class="panel" ng-show="isTabSelected(3)">
+						<div class="panel-body">
+							<blockquote ng-repeat="review in product.reviews">
+								<h5>{{review.stars}}</h5>
+								<p>{{review.comment}}</p>
+								<small>{{review.author}}</small>
+							</blockquote>
+							<hr/>
+							
+							
+							<form name="reviewForm" 
+							      ng-controller="ReviewFormController" 
+							      ng-submit="addNewReview(product)">
+							
+								<blockquote ng-show="newReview.stars">
+									<h5>{{newReview.stars}}</h5>
+									<p>{{newReview.comment}}</p>
+									<small>{{newReview.author}}</small>
+								</blockquote>
+							
+								<div class="form-group">
+									<label for="stars">stars</label>
+									<select id="stars" ng-options="n for n in [1,2,3,4,5]" class="form-control" ng-model="newReview.stars"></select>
+								</div>
+								<div class="form-group">
+									<label for="author">author</label>
+									<input id="author" type="email" class="form-control" ng-model="newReview.author" ng-disabled="true">
+								</div>
+								<div class="form-group">
+									<label for="comment">comment</label>
+									<textarea rows="5" cols="35" id="comment" class="form-control" ng-model="newReview.comment"></textarea>
+								</div>
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</form>
+							
+						</div>
+					</div>
+				</section>
+				
+			</div>
+			
+			
+		</div>
+		
+		
+
+
+	</div>
+
+	<script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript" src="bower_components/angular/angular.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+
+</body>
+</html>

@@ -27,10 +27,27 @@
 					    <span class="badge">{{$index+1}}</span> 
 						<h4>{{product.name | uppercase}} <small>{{product.make | date : 'yyyy' }}</small> </h4>
 						<h5>{{product.price | priceDiscount:product.discount | currency : '&#8377;' : 1 }}</h5>
-						<p>{{product.desc}}</p>
 						<button ng-show="product.canBuy" class="btn btn-primary">Add to Cart</button>
 					</div>
 				</div>
+				<hr/>
+				<section ng-init="tab=1">
+					<ul class="nav nav-tabs">
+						<li ng-class="{active:tab===1}"><a href ng-click="tab=1">Description</a></li>
+						<li ng-class="{active:tab===2}"><a href ng-click="tab=2">Specifications</a></li>
+						<li ng-class="{active:tab===3}"><a href ng-click="tab=3">Reviews</a></li>
+					</ul>
+					<div class="panel" ng-show="tab===1">
+						<div class="panel-body">{{product.desc}}</div>
+					</div>
+					<div class="panel" ng-show="tab===2">
+						<div class="panel-body">Not Yet</div>
+					</div>
+					<div class="panel" ng-show="tab===3">
+						<div class="panel-body">None Yet</div>
+					</div>
+				</section>
+				
 			</div>
 			
 			
