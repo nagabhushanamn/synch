@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+.ng-scope {
+	border: 1px solid red;
+	padding: 10px;
+}
+
+div {
+	margin: 3px;
+}
+</style>
+</head>
+<body class="container" ng:app="demoApp">
+
+	<div class="page-header">NG - directive basics</div>
+
+	<div ng-controller="ColorController">
+		
+		<input ng-model="color">
+
+		<hr />
+		
+		<hello-world my-color='green'></hello-world>
+		<hello-world></hello-world>
+
+	</div>
+
+
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demoApp', []);
+
+		mod.controller('ColorController', function($scope) {
+			$scope.color = 'yellow';
+		});
+
+		mod.directive('helloWorld', function() {
+			return {
+				restrict : "AECM",
+				replace : false,
+				scope : true,
+				templateUrl : "hello-world.html",
+				link : function(scope, element , attrs) {
+
+					//console.log('link func invoked....');
+					//console.log(scope.color);
+					//scope.color='grey';
+
+					//console.dir(element);
+
+					element.on('mouseover', function(e) {
+						element.css('cursor', 'pointer');
+					});
+					element.on('click', function(e) {
+						console.log('click handler...');
+						scope.color = '#def';
+						scope.$apply();
+					});
+					
+					
+					if(attrs.myColor){
+						//console.log(attrs.myColor);
+						scope.color=attrs.myColor;
+					}
+					
+
+				}
+			};
+		});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+

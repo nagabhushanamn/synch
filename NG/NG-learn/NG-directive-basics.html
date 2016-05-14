@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng:app="demoApp">
+
+	<div class="page-header">NG - directive basics</div>
+
+	<!-- 	attribute style -->
+
+	<!-- 	<div hello-world></div> -->
+	<!-- 	<div data-hello-world></div> -->
+	<!-- 	<div hello:world></div> -->
+
+
+	<!-- 	element style -->
+	<!-- 	<hello-world></hello-world> -->
+
+	<!-- 	class's name style -->
+	<!-- 	<div class="hello-world"></div> -->
+
+
+	<!-- directive:hello-world -->
+
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demoApp', []);
+		mod.directive('helloWorld', function() {
+			return {
+				restrict : "AECM",
+				replace : true,
+				template : "<h4>Angular World</h4>"
+			};
+		});
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
