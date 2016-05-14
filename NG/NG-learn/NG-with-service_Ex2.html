@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng:app="demoApp">
+
+	<div class="page-header">NG - without-service</div>
+
+	<div class="well" ng-controller="HitController">
+		<button class="btn btn-primary" ng-click="doHit()">Hit</button>
+		<span class="badge">{{count}}</span>
+	</div>
+
+	<div class="well" ng-controller="HitController">
+		<button class="btn btn-primary" ng-click="doHit()">Hit</button>
+		<span class="badge">{{count}}</span>
+	</div>
+
+	<div class="well" ng-controller="KickController">
+		<button class="btn btn-primary" ng-click="doKick()">Kick</button>
+		<span class="badge">{{count}}</span>
+	</div>
+
+
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demoApp', []);
+
+		mod.controller('HitController', function($scope, counterService) {
+			console.log('New HitController instance created..');
+			$scope.count = counterService.getCount();
+			$scope.doHit = function() {
+				counterService.doCount();
+				$scope.count = counterService.getCount();
+			}
+		});
+
+		mod.controller('KickController', function($scope, counterService) {
+			console.log('New KickController instance created..');
+			$scope.count = counterService.getCount();
+			$scope.doKick = function() {
+				counterService.doCount();
+				$scope.count = counterService.getCount();
+			}
+		});
+
+		//---------------------------------------------------------
+
+		function Counter() {
+			this.count = 0;
+			this.doCount = function() {
+				this.count++;
+			};
+			this.getCount = function() {
+				return this.count;
+			};
+		}
+
+		/* 
+		mod.factory('counterService', function() {
+			var count = 0;
+			console.log('creating / registering service...');
+			return new Counter();
+		}); 
+		*/
+		
+		mod.service('counterService',Counter);
+		
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+

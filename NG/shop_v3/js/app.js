@@ -84,7 +84,17 @@
 	storeModule.directive('productTitle', function(){
 		return{
 			restrict: "E",
-			templateUrl: "templates/product-title.html"
+			replace:true,
+			templateUrl: "templates/product-title.html",
+			link:function(scope,element,attrs){
+				console.log('link func..');
+				element.on('mouseenter',function(e){
+					element.css('background-color','#def');
+				});
+				element.on('mouseleave',function(e){
+					element.css('background-color','#fff');
+				});
+			}
 		};
 	});
 	storeModule.directive('productTabs', function(){

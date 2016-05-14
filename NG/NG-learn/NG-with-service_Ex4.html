@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>NG-learn</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng:app="demoApp">
+
+	<div class="page-header">NG - without-service</div>
+
+	<div ng-controller="DemoController"></div>
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var mod = angular.module('demoApp', []);
+		
+		mod.config(function(authToken) {
+			console.dir(authToken);
+		});
+
+		mod.controller('DemoController', function($scope, authToken,name) {
+			console.dir(authToken);
+		});
+
+		//---------------------------------------------------------
+
+		mod.value('name','Nag');	
+		mod.constant('authToken', {
+			token : 'sdfsdf579698sdfs768'
+		});
+		
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+

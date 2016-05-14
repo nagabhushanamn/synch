@@ -1,0 +1,24 @@
+
+<form name="reviewForm" 
+      ng-submit="addNewReview(product)">
+
+	<blockquote ng-show="newReview.stars">
+		<h5>{{newReview.stars}}</h5>
+		<p>{{newReview.comment}}</p>
+		<small>{{newReview.author}}</small>
+	</blockquote>
+
+	<div class="form-group">
+		<label for="stars">stars</label>
+		<select id="stars" ng-options="n for n in [1,2,3,4,5]" class="form-control" ng-model="newReview.stars"></select>
+	</div>
+	<div class="form-group">
+		<label for="author">author</label>
+		<input id="author" type="email" class="form-control" ng-model="newReview.author" ng-disabled="true">
+	</div>
+	<div class="form-group">
+		<label for="comment">comment</label>
+		<textarea rows="5" cols="35" id="comment" class="form-control" ng-model="newReview.comment"></textarea>
+	</div>
+	<button type="submit" class="btn btn-primary">Submit</button>
+</form>
