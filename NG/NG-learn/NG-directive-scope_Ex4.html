@@ -26,7 +26,7 @@ div {
 
 		<hr />
 		
-		<hello-world my-color='color'></hello-world>
+		<hello-world my-color='color' change-color="changeColor()"></hello-world>
 		<hello-world></hello-world>
 
 	</div>
@@ -43,6 +43,9 @@ div {
 
 		mod.controller('ColorController', function($scope) {
 			$scope.color = 'yellow';
+			$scope.changeColor=function(){
+				$scope.color='blue';
+			}
 		});
 
 		mod.directive('helloWorld', function() {
@@ -50,7 +53,8 @@ div {
 				restrict : "AECM",
 				replace : false,
 				scope:{
-					color:'=myColor'  // bi directional
+					color:'=myColor',  // bi directional
+					changeColor:'&changeColor'
 				},
 				templateUrl : "hello-world.html",
 				link : function(scope, element , attrs) {
@@ -64,11 +68,16 @@ div {
 					element.on('mouseover', function(e) {
 						element.css('cursor', 'pointer');
 					});
+					
+					/* 
+					
 					element.on('click', function(e) {
 						console.log('click handler...');
 						scope.color = '#def';
 						scope.$apply();
-					});
+					}); 
+					
+					*/
 					
 				}
 			};
