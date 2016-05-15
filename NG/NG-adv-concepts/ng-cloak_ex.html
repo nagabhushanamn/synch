@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shop-v1</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng-app="demoApp" data-ng-cloak>
+
+	<div class="page-header">NG - cloak</div>
+
+	color : {{color}}
+
+	<span ng-non-bindable>{color}}</span>
+
+	<hr />
+
+
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var app = angular.module('demoApp', []);
+		app.run(function($rootScope) {
+			$rootScope.color = 'Yellow';
+		});
+	</script>
+
+</body>
+</html>

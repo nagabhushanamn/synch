@@ -1,0 +1,48 @@
+
+
+
+
+   Testing
+   ----------
+   
+     -> Unit Testing
+     -> e2e Testing
+     
+     
+     -------------------
+     
+     Unit Testing
+     --------------
+     
+       we need 'testing f.w' ,
+       
+       	for to write test-cases , to run test-cases
+       	
+       most populat testing F.Ws
+       
+       -> jasmine
+       -> mocha  with chai,sinon , etc...
+       -> nodeunit
+       -> qunit
+       -> DOH
+       -> etc..
+       
+       -------------------------
+       
+      E2E Testing
+      
+      --> protractor
+      
+       
+       
+              
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       	

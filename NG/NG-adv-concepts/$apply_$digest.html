@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shop-v1</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+</head>
+<body class="container" ng-app="demoApp">
+
+	<div class="page-header">NG - $apply , $digest , $watch API</div>
+
+	color : {{color}}
+
+	<hr />
+
+	<div ng-controller="ColorController">
+
+		<input ng-model="color">
+		<button class="btn btn-primary" ng-click="change()">change (
+			click )</button>
+		<button class="btn btn-primary" onclick="change()">change (
+			onclick )</button>
+
+		<hr />
+
+		color : {{color}}
+
+	</div>
+
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var app = angular.module('demoApp', []);
+
+		app.controller('ColorController',
+				function($scope, $rootScope, $timeout) {
+					$scope.color = 'Yellow';
+
+					$scope.change = function() {
+						$scope.color = "Red";
+						//$rootScope.color = 'some color'
+					};
+
+					window.change = function() {
+
+						//$scope.$digest();
+						//$scope.$apply();  ( not recommended)
+
+						$scope.$apply(function() {
+							$scope.color = 'green';
+							$rootScope.color = 'some color'
+						})
+
+					}
+
+					//-------------------------
+
+					$scope.$watch('color', function(newColor, oldColor) {
+						console.log('color changed....');
+
+						$timeout(function() {
+							$scope.$digest();
+						});
+					});
+
+					//----------------------------
+
+				});
+	</script>
+
+</body>
+</html>

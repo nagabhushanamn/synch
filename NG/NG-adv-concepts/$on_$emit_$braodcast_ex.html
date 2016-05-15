@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shop-v1</title>
+<link href="bower_components/bootstrap/dist/css/bootstrap.css"
+	rel="stylesheet">
+<style type="text/css">
+.ng-scope {
+	border: 1px solid red;
+	padding: 10px;
+	margin: 5px;
+}
+</style>
+</head>
+<body class="container" ng-app="demoApp">
+
+	<div class="page-header">NG - $on , $emit and $broadcast</div>
+
+	{{child_message}}
+
+	<div ng-controller="ParentController">
+
+
+		{{child_message}}
+
+		<div ng-controller="ChildController">
+
+			{{child_message}}
+
+			<div ng-controller="GrandChildController">
+
+				<button class="btn btn-primary" ng-click="changeMessage()">change</button>
+
+			</div>
+
+			<div ng-controller="GrandChildController">{{child_message}}</div>
+
+		</div>
+
+	</div>
+
+
+	<script type="text/javascript"
+		src="bower_components/jquery/dist/jquery.js"></script>
+	<script type="text/javascript"
+		src="bower_components/angular/angular.js"></script>
+
+	<script type="text/javascript">
+		var app = angular.module('demoApp', []);
+
+		app.run(function($rootScope) {
+			$rootScope.$on('some-event', function(event, args) {
+				$rootScope.child_message = args.msg;
+			});
+		});
+
+		app.controller('ParentController', function($scope) {
+
+			$scope.$on('some-event', function(event, args) {
+				$scope.child_message = args.msg;
+				// we stop further propagation 
+			});
+
+		});
+		app.controller('ChildController', function($scope) {
+			$scope.$on('some-event', function(event, args) {
+				$scope.child_message = args.msg;
+			});
+		});
+		app.controller('GrandChildController', function($scope) {
+			$scope.message = '';
+			$scope.changeMessage = function() {
+				$scope.message = 'NG-world';
+				$scope.$emit('some-event', {
+					msg : $scope.message
+				});
+			}
+		});
+	</script>
+
+</body>
+</html>
